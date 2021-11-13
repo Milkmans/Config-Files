@@ -203,10 +203,10 @@ outputs:
             extended: yes     # enable this for extended logging information
             # custom allows additional HTTP fields to be included in eve-log.
             # the example below adds three additional fields when uncommented
-            #custom: [Accept-Encoding, Accept-Language, Authorization]
+            custom: [Accept-Encoding, Accept-Language, Authorization]
             # set this value to one and only one from {both, request, response}
             # to dump all HTTP headers for every HTTP request and/or response
-            # dump-all-headers: none
+            dump-all-headers: both
         - dns:
             # This configuration uses the new DNS logging format,
             # the old configuration is still available:
@@ -217,7 +217,7 @@ outputs:
             #version: 2
 
             # Enable/disable this logger. Default: enabled.
-            #enabled: yes
+            enabled: yes
 
             # Control logging of requests and responses:
             # - requests: enable logging of DNS queries
@@ -229,7 +229,7 @@ outputs:
             # Format of answer logging:
             # - detailed: array item per answer
             # - grouped: answers aggregated by type
-            # Default: all
+            #Default: all
             #formats: [detailed, grouped]
 
             # DNS record types to log, based on the query type.
@@ -243,10 +243,10 @@ outputs:
             # custom controls which TLS fields that are included in eve-log
             #custom: [subject, issuer, session_resumed, serial, fingerprint, sni, version, not_before, not_after, certificate, chain, ja3, ja3s]
         - files:
-            force-magic: no   # force logging magic on all logged files
+            force-magic: yes   # force logging magic on all logged files
             # force logging of checksums, available hash functions are md5,
             # sha1 and sha256
-            #force-hash: [md5]
+            force-hash: [md5,sha1,sha256]
         #- drop:
         #    alerts: yes      # log alerts that caused drops
         #    flows: all       # start or all: 'start' logs only a single drop
@@ -282,15 +282,15 @@ outputs:
             # with full detail. When extended mode is off (the
             # default), just enough information to map a MAC address
             # to an IP address is logged.
-            extended: no
+            extended: yes
         - ssh
         - mqtt:
             # passwords: yes           # enable output of passwords
         - http2
-        - stats:
-            totals: yes       # stats for all threads merged together
-            threads: no       # per thread stats
-            deltas: no        # include delta values
+        #- stats:
+        #    totals: yes       # stats for all threads merged together
+        #    threads: no       # per thread stats
+        #    deltas: no        # include delta values
         # bi-directional flows
         - flow
         # uni-directional flows
@@ -494,7 +494,7 @@ outputs:
   #
   # Note: limited by "stream.reassembly.depth"
   - tcp-data:
-      enabled: no
+      enabled: yes
       type: file
       filename: tcp-data.log
 
@@ -551,7 +551,7 @@ logging:
       enabled: yes
       # type: json
   - file:
-      enabled: yes
+      enabled: no
       level: info
       filename: suricata.log
       # type: json
