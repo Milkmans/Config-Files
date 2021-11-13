@@ -1884,19 +1884,3 @@ reference-config-file: /etc/suricata/reference.config
 # You can specify more than 2 configuration files, if needed.
 #include: include1.yaml
 #include: include2.yaml
-
-    © 2021 GitHub, Inc.
-    Terms
-    Privacy
-    Security
-    Status
-    Docs
-
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
-
-Loading complete
