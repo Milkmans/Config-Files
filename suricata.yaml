@@ -270,7 +270,7 @@ outputs:
         - nfs
         - smb
         - tftp
-        - ike
+        #- ike
         - dcerpc
         - krb5
         - snmp
