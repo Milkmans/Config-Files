@@ -507,7 +507,7 @@ outputs:
   #
   # Note: limited by the body limit settings
   - http-body-data:
-      enabled: yes
+      enabled: no
       type: file
       filename: http-data.log
 
